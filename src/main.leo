@@ -217,8 +217,6 @@ program private_compliance_module.aleo {
     async function finalize_claim_verification(public user: address, public is_valid: bool, public topic: u8) {
         // Only update status if the claim is valid
         if (is_valid) {
-            // Different topics might update different mappings or status flags
-            // For now, we're using the verified_users mapping for simplicity
             Mapping::set(verified_users, user, is_valid);
         }
     }
