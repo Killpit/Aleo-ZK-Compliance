@@ -1,4 +1,4 @@
-# Private Compliance module 
+# Private Compliance module using OnchainID architecture for claims issuance and checks
 
 ## Architecture
 
