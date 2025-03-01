@@ -223,14 +223,12 @@ program private_compliance_module.aleo {
     
     // Transfer a claim to another address (if the claim type allows transfer)
     transition transfer_claim(claim_record: claim, recipient: address, transferable_topics: u64) -> claim {
-        // Check if this claim topic is transferable
-        // We're using a bitmap approach where each bit represents if a topic is transferable
+
         let topic_bit: u64 = 1u64 << claim_record.topic;
         let is_transferable: bool = (transferable_topics & topic_bit) != 0u64;
         
         assert(is_transferable);
-        
-        // Create a new claim with the new owner
+
         return claim {
             owner: recipient,
             issuer: claim_record.issuer,
